@@ -29,8 +29,28 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+POINTS_PER_SINGLE = {
+  1 => 100,
+  2 => 0,
+  3 => 0,
+  4 => 0,
+  5 => 50,
+  6 => 0
+}
+
+POINTS_PER_SET = {
+  1 => 1000,
+  2 => 200,
+  3 => 300,
+  4 => 400,
+  5 => 500,
+  6 => 600
+}
+
 def score(dice)
-  # You need to write this method
+  dice.tally.inject(0) do |points, (die, rolls)|
+    points + (POINTS_PER_SINGLE[die]*(rolls % 3) + POINTS_PER_SET[die]*(rolls / 3))
+  end
 end
 
 class AboutScoringProject < Neo::Koan
