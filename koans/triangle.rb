@@ -14,10 +14,9 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  sides = method(__method__).parameters.map do |_, name|
-    binding.local_variable_get name
-  end
-  [nil, :equilateral, :isosceles, :scalene][sides.uniq.size]
+  a, b, c = sides = [a, b, c].sort
+  fail TriangleError unless a > 0 and a + b > c
+  [:scalene, :isosceles, :equilateral][-sides.uniq.size]
 end
 
 # Error class used in part 2.  No need to change this code.
