@@ -15,7 +15,7 @@
 #
 def triangle(a, b, c)
   a, b, c = sides = [a, b, c].sort
-  fail TriangleError unless a + b > c
+  raise TriangleError unless a + b > c
   [:scalene, :isosceles, :equilateral][-sides.uniq.size]
 end
 
