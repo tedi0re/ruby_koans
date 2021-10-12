@@ -49,7 +49,7 @@ POINTS_PER_SET = {
 
 def score(dice)
   dice.tally.inject(0) do |points, (die, rolls)|
-    points + (POINTS_PER_SINGLE[die]*(rolls % 3) + POINTS_PER_SET[die]*(rolls / 3))
+    points + (POINTS_PER_SINGLE[die]*(rolls%3) + POINTS_PER_SET[die]*(rolls/3))
   end
 end
 
